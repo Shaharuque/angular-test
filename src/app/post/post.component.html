@@ -1,0 +1,9 @@
+<!-- {{}} creatng type script scope in html -->
+<!-- post-list is the child component of post -->
+<p>{{title}}</p>
+<h1>{{fromParent}}</h1>
+<app-post-list [postData]="parentPost"></app-post-list>
+<!-- clickable button -->
+<button class="btn-style" (click)="sendMessage()">Click</button>
+
+

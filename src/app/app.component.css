@@ -1,0 +1,20 @@
+.childMessage {
+  color: rgb(19, 0, 128);
+  font-weight: bold;
+  font-size: 20px;
+}
+.class-binding-text {
+  color: orange;
+}
+
+.form-title{
+  text-align: center;
+}
+.fomt-style{
+  display: flex;
+  flex-direction: column;
+}
+.fomt-style input{
+  height: 40px;
+  margin-top: 10px;
+}
