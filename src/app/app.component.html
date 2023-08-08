@@ -36,12 +36,84 @@
 <input type="text" placeholder="Post Image URL" [(ngModel)]="postImageUrl">
 <input type="text" placeholder="Post URL" [(ngModel)]="postUrl">
 <input type="checkbox" [(ngModel)]="addBack">Add Background
-<button (keyup.enter)="onSubmit()">Submit</button>
+<button (click)="onSubmit()">Submit</button>
 </div>
 
-<div>
+<div class="preview-area">
   <h1>Post Title: {{postTitle}}</h1>
   <p>Post Content: {{postDetails}}</p>
   <img [src]="postImageUrl" alt="" srcset="">
   <div [class.background]="addBack"></div>
 </div>
+
+<!-- ngFor -->
+<h1>ngFor</h1>
+<div>
+  <ol>
+    <li *ngFor="let user of users">{{user}}</li>
+  </ol>
+  <ol>
+    <li *ngFor="let adminObj of admins"> {{adminObj?.name || 'No Data'}}</li>
+  </ol>
+</div>
+<!-- ANgular change detection mechanism -->
+<h1>Angular change detection</h1>
+<ol>
+  <!-- *ngFor for looping -->
+  <li *ngFor="let adminObj of admins">{{adminObj?.name}}
+    <button (click)="deleteUser(adminObj)">Delete</button>
+  </li>
+</ol>
+<button class="add-btn" (click)="addNewUser()">Add New User</button>
+
+<!-- *ngIf for -->
+<h1>ngIf</h1>
+<div *ngIf="admins.length>0">
+  <ol>
+    <li *ngFor="let adminObj of admins">{{adminObj?.name}}
+      <button (click)="deleteUser(adminObj)">Delete</button>
+    </li>
+  </ol>
+</div>
+<div *ngIf="admins.length ===0">
+  <h1>No Data</h1>
+</div>
+
+<!-- using *ng-Templete to do conditional rendering -->
+<h1>ng-template</h1>
+<div *ngIf="admins.length>0 then adminList else noData" ></div>
+<ng-template #adminList>
+  <ol>
+    <li *ngFor="let adminObj of admins">{{adminObj?.name}}
+      <button (click)="deleteUser(adminObj)">Delete</button>
+    </li>
+  </ol>
+</ng-template>
+<ng-template #noData>
+  <p>No Data</p>
+</ng-template>
+
+<!-- ngStyle Directive -->
+<h1 [ngStyle]="{color:bool ?'blue' :'red',fontSize:bool ?'30px' :'20px',backgroundColor:bool ?'green' :'yellow'
+}">ngStyle Directive</h1>
+<!-- ngClass Directive -->
+<h1 [ngClass]="{ngText:bool}">ngClass Directive</h1>
+
+<!-- Pipes -->
+<h1>Pipes</h1>
+<h2>{{name}}</h2>
+<h2>{{name | uppercase}}</h2>
+<h2>{{name | lowercase}}</h2>
+<h2>{{name | slice:3}}</h2>
+<h2>{{name | slice:3:5}}</h2>
+<h2>{{person | json}}</h2>
+<h2>{{5.678 | number:'1.2-3'}}</h2>
+<h2>{{5.678 | number:'3.4-5'}}</h2>
+<h2>{{0.25 | percent}}</h2>
+<h2>{{0.25 | currency}}</h2>
+<h2>{{0.25 | currency:'GBP':'code'}}</h2>
+<h2>{{date}}</h2>
+<h2>{{date | date:'short'}}</h2>
+<h2>{{date | date:'shortDate'}}</h2>
+<!-- Creating cutom pipe -->
+

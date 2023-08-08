@@ -42,6 +42,32 @@ export class AppComponent {
   addBack:boolean=false
 
   onSubmit(){
+    console.log("Form Submitted")
   console.log(this.postTitle,this.postDetails,this.postUrl,this.postImageUrl)
   }
+
+  // looping through array
+  users:Array<string>=['Amin','shafiq','shakib', 'sakib']
+  admins:Array<any>=[{name:'shaik',id:27,passion:'cricket'},{name:'shakib',id:75,passion:'football'} ,{id:75,passion:'football'}]
+
+
+  //angular change detection
+  addNewUser(){
+    this.users.push('new user')
+  }
+deleteUser(user:any){
+  console.log(user)
+  let index=this.admins.indexOf(user)
+  this.admins.splice(index,1)
+  }
+
+  // Pipes
+  name:string="shakib al hasan"
+  person:any={
+    name:'shakib',
+    age:34,
+    passion:'cricket'
+  }
+  date=new Date()
+
 }

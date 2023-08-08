@@ -18,3 +18,13 @@
   height: 40px;
   margin-top: 10px;
 }
+
+.add-btn{
+  background-color: teal;
+  color: white;
+}
+
+.ngText{
+  font-size: 15px;
+  color: gray
+}
