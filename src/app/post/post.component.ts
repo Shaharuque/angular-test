@@ -1,4 +1,6 @@
 import { Component,Input,Output,OnInit, EventEmitter } from '@angular/core';
+import { PostService } from '../AngularServices/post.service';
+import { Post } from '../models/post';
 
 @Component({
   selector: 'app-post',
@@ -19,9 +21,22 @@ export class PostComponent implements OnInit {
   @Output() messageEvent=new EventEmitter<string>();
 
   // constructor works soon after object is created
-  constructor() { }
-  //ngOnit works soon after the post component is fully initialized in the browser/dom
+  // Injecting PostService to the post component
+  constructor(private postService:PostService) { }
+  // post.service ar method call kora hoise ngOnit() ar vitor
+  //ngOnit works soon after the post component is fully initialized in the browser/dom. and then ngOnit() ar vitor ja asey oita only one tym call hobey
+  postList:any=[]
   ngOnInit(): void {
+    this.postList=this.postService.getItems()
+    console.log(this.postList)
+  }
+
+  addNewData(){
+    let item:Post={name:"amin5",id:27}
+    this.postService.addItem(item)
+  }
+  deletePost(item:any){
+    this.postService.deleteItem(item)
   }
 
   //onclick function when the click btn clicked the the childMessage shown to the parent component app.component.html
@@ -29,4 +44,7 @@ export class PostComponent implements OnInit {
     // console.log('message from child component post');
     this.messageEvent.emit(this.childMessage)
   }
+
+
+
 }

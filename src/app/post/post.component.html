@@ -6,4 +6,16 @@
 <!-- clickable button -->
 <button class="btn-style" (click)="sendMessage()">Click</button>
 
+<!-- Angular Services: data sharing between components tho components have no relation between them-->
+<!-- Services are a great way to share information among classes that don't know each other. -->
+<h1 style="text-align: center; font-size: 20px;">Angular Services</h1>
+<!-- post.service thekey data newa hoisey post component a and then tar opor kicho kaj hoisey. postList ar data gula ashsey PostService thekey. -->
+<div>
+  <ol>
+    <li *ngFor="let post of postList">{{post?.name}}<button (click)="deletePost(post)">Close</button></li>
+  </ol>
+
+  <button style="background-color: teal;color: white;" (click)="addNewData()">Add Post</button>
+</div>
+
 

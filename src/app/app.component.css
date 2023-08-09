@@ -28,3 +28,22 @@
   font-size: 15px;
   color: gray
 }
+
+.form{
+  display: flex;
+  flex-direction: column;
+}
+
+.form input{
+  height: 40px;
+  margin-top: 10px;
+}
+
+.nestedForm{
+  display: flex;
+  align-items: center;
+}
+.nestedForm input{
+  height: 40px;
+  margin-top: 10px;
+}
